@@ -1,3 +1,6 @@
+SC=sc
+DEST = build
+
 all: build/test build/testv37
 
 build/test: build/test.o build/mount.o
@@ -6,6 +9,10 @@ build/test: build/test.o build/mount.o
 build/testv37: build/test.o build/mountv37.o
    sc link build/test.o build/mountv37.o to build/testv37
 
-build/test.o: test.c
-build/mount.o: mount.c
-build/mountv37.o: mountv37.c
+.c.o:
+   sc OBJNAME=$@ $<
+
+$(DEST)/test.o: test.c
+$(DEST)/mount.o: mount.c
+$(DEST)/mountv37.o: mountv37.c
+
