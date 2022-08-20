@@ -1,11 +1,11 @@
-all: test testv37
+all: build/test build/testv37
 
-test: test.o mount.o
-   sc link test.o mount.o to test
+build/test: build/test.o build/mount.o
+   sc link build/test.o build/mount.o to build/test
 
-testv37: test.o mountv37.o
-   sc link test.o mountv37.o to testv37
+build/testv37: build/test.o build/mountv37.o
+   sc link build/test.o build/mountv37.o to build/testv37
 
-test.o: test.c
-mount.o: mount.c
-mountv37.o: mountv37.c
+build/test.o: test.c
+build/mount.o: mount.c
+build/mountv37.o: mountv37.c
