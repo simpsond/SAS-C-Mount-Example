@@ -1,6 +1,7 @@
 /* Copyright (c) 1994 Doug Walker, Raleigh, NC */
 /* All Rights Reserved. */
 
+
 #include <dos/dos.h>
 #include <exec/memory.h>
 #include <exec/execbase.h>
@@ -24,7 +25,8 @@ int DisMount(struct DeviceList *volume)
    long *tmpl;
 
    /* Check for any outstanding locks; if present, can't dismount */
-   if(volume == NULL || volume->dl_Lock != NULL) return -1;
+   // if(volume == NULL || volume->dl_Lock != NULL) return -1;
+   if(volume == 0 || volume->dl_Lock != 0) return -1;
 
    if(V37)
    {
@@ -162,7 +164,8 @@ struct DeviceList *Mount(char *name, struct MsgPort *port)
    volume->dl_VolumeDate.ds_Days   = 3800L;
    volume->dl_VolumeDate.ds_Minute =
    volume->dl_VolumeDate.ds_Tick   = 0L;
-   volume->dl_Lock = NULL;
+   // volume->dl_Lock = NULL;
+   volume->dl_Lock = 0;
 
    /* Now we can own the volume by giving it our msgport */
    volume->dl_Task = port;

@@ -1,4 +1,5 @@
 SC=sc
+SRC = src
 DEST = build
 
 all: build/test build/testv37
@@ -12,7 +13,9 @@ build/testv37: build/test.o build/mountv37.o
 .c.o:
    sc OBJNAME=$@ $<
 
-$(DEST)/test.o: test.c
-$(DEST)/mount.o: mount.c
-$(DEST)/mountv37.o: mountv37.c
+clean:
+    delete $(DEST)/\#?
 
+$(DEST)/test.o: $(SRC)/test.c
+$(DEST)/mount.o: $(SRC)/mount.c
+$(DEST)/mountv37.o: $(SRC)/mountv37.c

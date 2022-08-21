@@ -1,2 +1,6 @@
+.idea
+cmake*
+CMakeLists.txt
+*.uaem
 build
 build.uaem
